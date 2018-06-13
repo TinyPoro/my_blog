@@ -2,12 +2,12 @@
 
 # Giải nén dữ liệu nhị phân trong PHP
 
-Làm việc với các file nhị phân trong PHP là một việc hiếm khi được yêu cầu.Tuy nhiên khi cần các tính năng 'pack' và 'unpack
- trong PHP có thể giúp bạn rất nhiều. Để thiết lập giai đoạn, chúng tôi sẽ bắt đầu với một vấn đề trong lập trình, điều này sẽ giúp cho cuộc thảo luận cùng với bối cảnh liên quan với nhau. Vấn đề ở đây là : Chúng ta muốn viết một hàm để lấy một bức ảnh làm đối số và cho chúng ta biết file đó có phải là một ảnh GIF không; mà không liên quan tới extension của file. Chúng ta không sử dụng bất kỳ hàm nào của thư viện GD.  
+Làm việc với các file nhị phân trong PHP là một việc hiếm khi được yêu cầu.Tuy nhiên khi cần, các tính năng 'pack' và 'unpack
+ trong PHP có thể giúp bạn rất nhiều. Để thiết lập giai đoạn, chúng tôi sẽ bắt đầu với một vấn đề trong lập trình, điều này sẽ giúp cho cuộc thảo luận luôn liên quan tới bối cảnh  cụ thể. Vấn đề ở đây là : Chúng ta muốn viết một hàm để lấy một bức ảnh làm đối số và cho chúng ta biết file đó có phải là một ảnh GIF không; mà không liên quan tới extension của file. Chúng ta không sử dụng bất kỳ hàm nào của thư viện GD.  
 
 #### Một header file của ảnh GIF
 
-Với yêu cầu chúng ta không được phép sử sụng bất kỳ hàm nào của đồ hoạ, để giải quyết vấn đề chúng ta cần lấy dự liệu liên quan từ chínhh file ảnh GIF. Không giống như của file HTM hoặc XML hoặc định dạng text khác , một file GIF và hầu hết các định dạng khác của ảnh được lưu trữ dưới một định dạng nhị phân. Hầu hết các file nhị phân mang một header đầu đầu file cá mà cung cấp các thông tin meta về file cụ thể. Chúng ta có thể sử dụng thông tin đó để tìm ra loại file hoặc các thứ khác, giống như chiều cao, chiều rộng trong một file GIF. Một loại header raw thông thường của GIF được hiển thị bên dưới, sử dụng một editor cho hex như là [WinHex][1]. 
+Với yêu cầu chúng ta không được phép sử sụng bất kỳ hàm nào của đồ hoạ, để giải quyết vấn đề chúng ta cần lấy dự liệu liên quan từ chính file ảnh GIF. Không giống như của file HTM hoặc XML hoặc định dạng text khác , một file GIF và hầu hết các định dạng khác của ảnh được lưu trữ dưới một định dạng nhị phân. Hầu hết các file nhị phân mang một header đầu đầu file cá mà cung cấp các thông tin meta về file cụ thể. Chúng ta có thể sử dụng thông tin đó để tìm ra loại file hoặc các thứ khác, giống như chiều cao, chiều rộng trong một file GIF. Một loại header raw thông thường của GIF được hiển thị bên dưới, sử dụng một editor cho hex như là [WinHex][1]. 
 
 ![][2]
 
@@ -38,7 +38,7 @@ Vì vậy, để kiểm tra một file ảnh là một file GIF, chúng ta cần
 
 #### Sử dụng hàm unpack()
 
-[unpack()][3] là sự bổ sung của [pack()][4] – nó chuyển đổi dữ liệu nhị phân thành một mảng kết hợp dựa trên định dạng được chỉ định. Điều này giống với hàm _sprintf_, chuyển đổi dữ liệu ký tự sang một số định dạng. Hai hàm này cho phép chúng ta đọc và ghi bộ đêm cho dữ liệu nhị phân theo định dạng của chuỗi cho trước.. Điều đó dễ dàng cho phép một lập trình viên chuyển đổi dữ liệu với các chương trình được viết bằng ngôn ngữ khác hoặc định dạng khác. Lây một ví dụ nhỏ.
+[unpack()][3] là sự bổ sung của [pack()][4] – nó chuyển đổi dữ liệu nhị phân thành một mảng kết hợp dựa trên định dạng được chỉ định. Điều này giống với hàm _sprintf_, chuyển đổi dữ liệu ký tự sang một số định dạng. Hai hàm này cho phép chúng ta đọc và ghi bộ đệm cho dữ liệu nhị phân theo định dạng của chuỗi cho trước.. Điều đó dễ dàng cho phép một lập trình viên chuyển đổi dữ liệu với các chương trình được viết bằng ngôn ngữ khác hoặc định dạng khác. Lây một ví dụ nhỏ.
 
 | ----- |
 | 
@@ -69,7 +69,7 @@ Nó sẽ in ra như sau, This will print the following, mã thập phân cho  'c
 
  | 
 
-Trong ví dụ trên đối số đầu tiên là định dạng chuỗi và thứ hai là dữ liệu thực tế. Chuỗi định dạng sẽ chỉ định cách mà đối dữ liệu nên được parse ra. Trong ví dụ phần đầu của định dạng là 'C', xác định rằng chúng ta sẽ xử lý ký tự đầu tiên của dữ liệu giống như byte không dấu. Phần tiếp theo là '*', cho thấy rằng hàm sẽ áp dụng vào định dạng code ở phần chỉ định trước lên tất cả các ký tự còn lại.
+Trong ví dụ trên đối số đầu tiên là định dạng chuỗi và thứ hai là dữ liệu thực tế. Chuỗi định dạng sẽ chỉ định cách mà đối dữ liệu nên được phân giải ra. Trong ví dụ phần đầu của định dạng là 'C', xác định rằng chúng ta sẽ xử lý ký tự đầu tiên của dữ liệu giống như byte không dấu. Phần tiếp theo là '*', cho thấy rằng hàm sẽ áp dụng vào định dạng code ở phần chỉ định trước lên tất cả các ký tự còn lại.
 
 Dù điều này trông có vẻ khó hiểu, nhưng phần tiếp theo sẽ cung cấp một ví dụ cụ thể.
 
@@ -107,7 +107,7 @@ Dưới đây là giải pháp cho vấn đề GIF của chúng ta sử dụng h
 
  | 
 
-Dòng code quan trọng cần chú ý là phần khai báo định dạng. Ký tự  'A6' chỉ định hàm unpack() sẽ lấy 6 bytes đầu tiên trong dữ liệu và ngắt chúng ra là ột chuỗi. Dữ liệu được lấy ra sau đó lưu vào một mảng liên kết với khoá có tên 'version'.
+Dòng code quan trọng cần chú ý là phần khai báo định dạng. Ký tự  'A6' chỉ định hàm unpack() sẽ lấy 6 bytes đầu tiên trong dữ liệu và ngắt chúng ra là một chuỗi. Dữ liệu được lấy ra sau đó lưu vào một mảng liên kết với khoá có tên 'version'.
 
 Ví dụ khác bên dưới. Nó trả về thêm dữ liệu header của file GIF, bao gồm chiều rộng và chiều cao của ảnh.
 
@@ -215,7 +215,7 @@ Bên dưới chúng ta sẽ đi vào chi tiết làm về cách công cụ về 
 
  | 
 
-Thêm các tuỳ chọn định dạng có thể tìm [ở đây][4]. Mặc dù tối chỉ đưa ra một ví dụ nhỏ, pack/unpack có khả năng con làm việc phức tạp hơn nhiều so với ở đây.
+Các tuỳ chọn định dạng khác có thể tìm [ở đây][4]. Mặc dù tôi chỉ đưa ra một ví dụ nhỏ, pack/unpack có khả năng làm việc phức tạp hơn nhiều so với ở đây.
 
 Chú ý: Từ phiên bản PHP 7.2.0 lại float và double hỗ trợ cả hai both Big Endian và Little Endian.
 
